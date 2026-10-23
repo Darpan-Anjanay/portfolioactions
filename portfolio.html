@@ -1,108 +1,734 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darpan Anjanay | Backend Software Developer</title>
+    <title>Vistas of Bharat: Nature & Heritage</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        earth: {
+                            50: '#fcfbfa',
+                            100: '#f5f2ed',
+                            200: '#e8e1d5',
+                            600: '#8c6d53',
+                            700: '#6e533d',
+                            800: '#523d2d',
+                            900: '#3a2b20',
+                        },
+                        saffron: {
+                            500: '#e06d28',
+                            600: '#c55717',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-slide {
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
 </head>
-<script src="https://cdn.tailwindcss.com"></script>
+<body class="bg-earth-50 text-earth-900 antialiased selection:bg-saffron-500 selection:text-white">
 
-<body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-earth-50/90 backdrop-blur-md border-b border-earth-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-saffron-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-mountain-sun text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-earth-900 block leading-none">Vistas of Bharat</span>
+                    <span class="text-xs text-earth-600 font-medium tracking-widest uppercase">Nature & Heritage</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-earth-700">
+                <a href="#hero" class="hover:text-saffron-600 transition-colors">Home</a>
+                <a href="#blog-section" class="hover:text-saffron-600 transition-colors">Destinations</a>
+                <a href="#about" class="hover:text-saffron-600 transition-colors">About</a>
+                <a href="#newsletter" class="hover:text-saffron-600 transition-colors">Newsletter</a>
+            </nav>
 
-<!-- Navbar -->
-<nav class="bg-white shadow-md p-4">
-  <div class="max-w-6xl mx-auto flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-blue-600">John Doe</h1>
+            <div class="flex items-center space-x-4">
+                <button onclick="openSearchModal()" class="w-10 h-10 rounded-full bg-earth-200/60 hover:bg-earth-200 flex items-center justify-center text-earth-800 transition-colors">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+                <a href="#newsletter" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-earth-900 text-white font-medium text-sm hover:bg-saffron-600 transition-colors shadow-sm">
+                    Subscribe
+                </a>
+            </div>
+        </div>
+    </header>
 
-    <ul class="flex space-x-6 font-medium">
-      <li><a href="#about" class="hover:text-blue-600">About</a></li>
-      <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
-      <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-<!-- Hero Section -->
-<section class="text-center py-20 bg-gradient-to-r from-blue-400 to-indigo-800 text-white">
-  <h2 class="text-4xl md:text-6xl font-bold mb-6">
-    Hi, I'm Darpan Anjanay test 👋
-  </h2>
+    <!-- Hero Section with Background Slider -->
+    <section id="hero" class="relative h-[85vh] min-h-[550px] overflow-hidden flex items-center justify-center">
+        <!-- Background Slider Images -->
+        <div class="absolute inset-0 z-0">
+            <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1615832313642-5f25b11a91d7?auto=format&fit=crop&w=1920&q=80" alt="Udaipur Lake Palace" class="w-full h-full object-cover">
+            </div>
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80" alt="Jaipur Hawa Mahal Architecture" class="w-full h-full object-cover">
+            </div>
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80" alt="Ooty Nilgiri Tea Gardens" class="w-full h-full object-cover">
+            </div>
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1920&q=80" alt="Mumbai Marine Drive" class="w-full h-full object-cover">
+            </div>
+            <!-- Overlay Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-earth-900/40 to-black/30"></div>
+        </div>
 
-  <p class="text-lg md:text-xl mb-8">
-    A Passionate Software Developer building modern web applications.
-  </p>
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white mt-12">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-saffron-500/90 text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm animate-fade-in">
+                Explore the Soul of India
+            </span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                Vistas of Bharat: <br><span class="text-saffron-500">Nature & Heritage</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-earth-100 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Journey through the serene lakes of Udaipur, royal alleys of Jaipur, mist-kissed tea estates of Ooty, and the coastal rhythm of Mumbai.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#blog-section" class="w-full sm:w-auto px-8 py-4 rounded-full bg-saffron-500 hover:bg-saffron-600 text-white font-medium transition-colors shadow-lg shadow-saffron-500/30 flex items-center justify-center space-x-2">
+                    <span>Explore Stories</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium transition-colors backdrop-blur-md border border-white/20">
+                    Our Philosophy
+                </a>
+            </div>
+        </div>
 
-  <a href="#projects"
-     class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition">
-    View My Work
-  </a>
-</section>
-<!-- About Section -->
-<section id="about" class="py-20">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+        <!-- Slider Pagination Dots -->
+        <div class="absolute bottom-6 z-20 flex space-x-2">
+            <button onclick="currentSlide(0)" class="slider-dot w-3 h-3 rounded-full bg-white transition-all"></button>
+            <button onclick="currentSlide(1)" class="slider-dot w-3 h-3 rounded-full bg-white/50 transition-all"></button>
+            <button onclick="currentSlide(2)" class="slider-dot w-3 h-3 rounded-full bg-white/50 transition-all"></button>
+            <button onclick="currentSlide(3)" class="slider-dot w-3 h-3 rounded-full bg-white/50 transition-all"></button>
+        </div>
+    </section>
 
-    <p class="text-lg text-gray-600 leading-relaxed">
-      I'm a full-stack developer specializing in building exceptional
-      digital experiences. I love working with modern technologies
-      like React, Node.js, and Tailwind CSS.
-    </p>
-  </div>
-</section>
-<!-- Projects Section -->
-<section id="projects" class="bg-gray-200 py-20">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-12">My Projects</h2>
+    <!-- Main Content & Blog Section -->
+    <main id="blog-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Section Header & Category Filters -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-earth-200">
+            <div>
+                <span class="text-saffron-600 font-semibold text-sm uppercase tracking-wider block mb-2">Curated Journals</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-earth-900 tracking-tight">Breathtaking Destinations</h2>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="category-filters">
+                <button onclick="filterCategory('All')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-900 text-white shadow-sm">All</button>
+                <button onclick="filterCategory('Mountains')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-200/80 hover:bg-earth-200 text-earth-700">Mountains</button>
+                <button onclick="filterCategory('Temples')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-200/80 hover:bg-earth-200 text-earth-700">Temples</button>
+                <button onclick="filterCategory('Lakes')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-200/80 hover:bg-earth-200 text-earth-700">Lakes</button>
+                <button onclick="filterCategory('Coastal')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-200/80 hover:bg-earth-200 text-earth-700">Coastal</button>
+                <button onclick="filterCategory('Heritage')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-200/80 hover:bg-earth-200 text-earth-700">Heritage</button>
+            </div>
+        </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      
-      <!-- Project Card -->
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-4">Project One</h3>
-        <p class="text-gray-600 mb-4">
-          A web application built using React and Node.js.
-        </p>
-        <a href="#" class="text-blue-600 font-medium">View Project →</a>
-      </div>
+        <!-- Blog Grid -->
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic Post Cards will be injected here via JS -->
+        </div>
 
-      <!-- Project Card -->
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-4">Project Two</h3>
-        <p class="text-gray-600 mb-4">
-          An e-commerce platform with payment integration.
-        </p>
-        <a href="#" class="text-blue-600 font-medium">View Project →</a>
-      </div>
+    </main>
 
-      <!-- Project Card -->
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-4">Project Three</h3>
-        <p class="text-gray-600 mb-4">
-          A portfolio website built with Tailwind CSS.
-        </p>
-        <a href="#" class="text-blue-600 font-medium">View Project →</a>
-      </div>
+    <!-- About Section -->
+    <section id="about" class="bg-earth-100 py-20 border-y border-earth-200 my-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-saffron-600 font-semibold text-sm uppercase tracking-wider block mb-2">About Our Journey</span>
+                    <h3 class="text-3xl font-bold text-earth-900 mb-6">Celebrating the Timeless Landscapes & Architecture of India</h3>
+                    <p class="text-earth-700 leading-relaxed mb-6 font-light">
+                        Vistas of Bharat is dedicated to capturing the raw beauty of nature and the timeless grandeur of Indian heritage. From the misty Nilgiri hills of Ooty to the majestic lakes of Udaipur and the coastal winds of Mumbai, our mission is to chronicle sustainable travel, historical architecture, and breathtaking landscapes.
+                    </p>
+                    <div class="grid grid-cols-3 gap-6 pt-4 border-t border-earth-200">
+                        <div>
+                            <span class="block text-2xl font-bold text-earth-900">50+</span>
+                            <span class="text-xs text-earth-600 font-medium uppercase">Destinations</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-earth-900">12M</span>
+                            <span class="text-xs text-earth-600 font-medium uppercase">Readers</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-earth-900">100%</span>
+                            <span class="text-xs text-earth-600 font-medium uppercase">Authentic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80" alt="Incredible India Taj Mahal and Heritage" class="rounded-2xl shadow-xl object-cover w-full h-[380px]">
+                    <div class="absolute -bottom-6 -left-6 bg-earth-900 text-white p-6 rounded-2xl shadow-lg hidden sm:block max-w-xs">
+                        <p class="text-sm italic font-light">"To travel is to discover that everyone is wrong about other countries."</p>
+                        <span class="block text-xs text-saffron-500 font-semibold mt-2">— Aldous Huxley</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="bg-earth-900 text-white rounded-3xl p-8 sm:p-14 relative overflow-hidden shadow-2xl">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-saffron-500/20 rounded-full blur-3xl"></div>
+            <div class="relative z-10 max-w-2xl mx-auto text-center">
+                <span class="text-saffron-500 font-semibold text-xs uppercase tracking-widest block mb-3">Stay Connected</span>
+                <h3 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Receive Weekly Bharat Vistas</h3>
+                <p class="text-earth-200 text-sm sm:text-base mb-8 font-light">
+                    Subscribe to get hand-picked travel guides, photography tips, and heritage stories straight to your inbox. No spam ever.
+                </p>
+                <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <input type="email" id="newsletter-email" required placeholder="Enter your email address" class="px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-earth-200 focus:outline-none focus:border-saffron-500 flex-1 max-w-md backdrop-blur-sm text-sm">
+                    <button type="submit" class="px-8 py-4 rounded-full bg-saffron-500 hover:bg-saffron-600 text-white font-medium text-sm transition-colors shadow-lg">
+                        Subscribe Now
+                    </button>
+                </form>
+                <div id="newsletter-msg" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-earth-900 text-earth-300 border-t border-earth-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-1">
+                    <a href="#" class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-saffron-500 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-mountain-sun text-sm"></i>
+                        </div>
+                        <span class="text-lg font-bold text-white tracking-tight">Vistas of Bharat</span>
+                    </a>
+                    <p class="text-xs text-earth-400 font-light leading-relaxed mb-4">
+                        Celebrating nature, wildlife sanctuaries, ancient temples, and architectural marvels across Incredible India.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-earth-800 hover:bg-saffron-500 hover:text-white flex items-center justify-center text-earth-300 transition-colors text-xs"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-earth-800 hover:bg-saffron-500 hover:text-white flex items-center justify-center text-earth-300 transition-colors text-xs"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-earth-800 hover:bg-saffron-500 hover:text-white flex items-center justify-center text-earth-300 transition-colors text-xs"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Destinations</h4>
+                    <ul class="space-y-2 text-xs font-light">
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Udaipur Lakes</a></li>
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Jaipur Architecture</a></li>
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Mumbai Coastline</a></li>
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Ooty Nilgiri Hills</a></li>
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Ancient Temples</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Categories</h4>
+                    <ul class="space-y-2 text-xs font-light">
+                        <li><a href="#" onclick="filterCategory('Mountains')" class="hover:text-saffron-500 transition-colors">Mountains & Hills</a></li>
+                        <li><a href="#" onclick="filterCategory('Temples')" class="hover:text-saffron-500 transition-colors">Sacred Temples</a></li>
+                        <li><a href="#" onclick="filterCategory('Lakes')" class="hover:text-saffron-500 transition-colors">Serene Lakes</a></li>
+                        <li><a href="#" onclick="filterCategory('Coastal')" class="hover:text-saffron-500 transition-colors">Coastal Escapes</a></li>
+                        <li><a href="#" onclick="filterCategory('Heritage')" class="hover:text-saffron-500 transition-colors">Royal Heritage</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Legal & Support</h4>
+                    <ul class="space-y-2 text-xs font-light">
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Terms of Use</a></li>
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Contributor Guidelines</a></li>
+                        <li><a href="#" class="hover:text-saffron-500 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-earth-800 text-center text-xs text-earth-500 font-light flex flex-col sm:flex-row items-center justify-between">
+                <p>&copy; 2026 Vistas of Bharat. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Crafted with passion for Incredible India.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Full Article Modal -->
+    <div id="article-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-earth-50 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative animate-scale-up">
+            <button onclick="closeArticleModal()" class="sticky top-4 float-right mr-4 z-10 w-10 h-10 rounded-full bg-earth-900/80 hover:bg-earth-900 text-white flex items-center justify-center transition-colors shadow-lg">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-content" class="p-6 sm:p-10">
+                <!-- Dynamically populated article content -->
+            </div>
+        </div>
     </div>
-  </div>
-</section>
-<!-- Contact Section -->
-<section id="contact" class="py-20">
-  <div class="max-w-xl mx-auto text-center">
-    <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
 
-    <p class="text-gray-600 mb-6">
-      Interested in working together? Let's talk!
-    </p>
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-start justify-center pt-20 p-4">
+        <div class="bg-earth-50 rounded-2xl max-w-xl w-full p-6 shadow-2xl">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-earth-200">
+                <h3 class="font-bold text-earth-900">Search Destinations</h3>
+                <button onclick="closeSearchModal()" class="text-earth-600 hover:text-earth-900"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="relative mb-4">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-earth-500"></i>
+                <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Search Udaipur, Jaipur, Ooty, Temples..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-earth-100 border border-earth-200 text-earth-900 placeholder-earth-500 focus:outline-none focus:border-saffron-500 text-sm">
+            </div>
+            <div id="search-results" class="max-h-60 overflow-y-auto space-y-2">
+                <p class="text-xs text-earth-500 text-center py-4">Type to search blog posts...</p>
+            </div>
+        </div>
+    </div>
 
-    <a href="mailto:john@example.com"
-       class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-      Send Email
-    </a>
-  </div>
-</section>
-<footer class="bg-gray-800 text-white text-center p-6">
-  <p>© 2026 John Doe. All rights reserved.</p>
-</footer>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-earth-900 text-white px-6 py-3 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-saffron-500 text-lg"></i>
+        <span id="toast-msg" class="text-sm font-medium">Notification message</span>
+    </div>
 
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Blog Posts Data (Udaipur, Jaipur, Mumbai, Ooty, Temples, etc.)
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Whispering Waters & Palaces: The Timeless Romance of Udaipur",
+                category: "Lakes",
+                location: "Udaipur, Rajasthan",
+                readTime: "5 min read",
+                author: "Aarav Sharma",
+                date: "Oct 22, 2026",
+                image: "https://images.unsplash.com/photo-1615832313642-5f25b11a91d7?auto=format&fit=crop&w=800&q=80",
+                snippet: "Explore the shimmering waters of Lake Pichola, the majestic City Palace, and the lush Aravalli hills surrounding the Venice of the East.",
+                content: `
+                    <span class="text-saffron-600 text-xs font-semibold uppercase tracking-widest block mb-2">Udaipur • Lakes & Heritage</span>
+                    <h2 class="text-3xl font-bold text-earth-900 mb-4">Whispering Waters & Palaces: The Timeless Romance of Udaipur</h2>
+                    <div class="flex items-center space-x-4 text-xs text-earth-600 mb-6 pb-4 border-b border-earth-200">
+                        <span><i class="fa-regular fa-user mr-1"></i> Aarav Sharma</span>
+                        <span><i class="fa-regular fa-calendar mr-1"></i> Oct 22, 2026</span>
+                        <span><i class="fa-regular fa-clock mr-1"></i> 5 min read</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1615832313642-5f25b11a91d7?auto=format&fit=crop&w=1200&q=80" alt="Udaipur" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-md">
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Often hailed as the 'Venice of the East', Udaipur is a breathtaking oasis nestled in the arid expanse of Rajasthan. Framed by the rugged yet verdant Aravalli hills, the city is a mesmerizing tapestry of glistening lakes, marble palaces, and narrow bustling alleyways soaked in royal history.
+                    </p>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">The Majesty of Lake Pichola</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        A boat ride across Lake Pichola during golden hour unveils the legendary Jag Mandir and the ethereal Lake Palace seemingly floating on water. The reflections of royal balconies and courtyards create an otherworldly serenity that has captivated poets and travelers for centuries.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 my-6">
+                        <img src="https://images.unsplash.com/photo-1590053152144-d99677279bc3?auto=format&fit=crop&w=600&q=80" alt="Udaipur Palace Architecture" class="rounded-xl h-48 object-cover w-full">
+                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80" alt="Aravalli Hills View" class="rounded-xl h-48 object-cover w-full">
+                    </div>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">Exploring the Aravalli Trails</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Beyond the palaces lies the raw natural beauty of the Aravalli range. Monsoon season transforms these ancient hills into a velvety green paradise, dotted with cascading waterfalls and ancient monsoon fortresses like Monsoon Palace (Sajjangarh), offering panoramic sunset views across Mewar.
+                    </p>
+                `
+            },
+            {
+                id: 2,
+                title: "Terracotta Dreams: Architectural Splendor & Gardens of Jaipur",
+                category: "Heritage",
+                location: "Jaipur, Rajasthan",
+                readTime: "6 min read",
+                author: "Priya Menon",
+                date: "Oct 19, 2026",
+                image: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=800&q=80",
+                snippet: "Wander through the Pink City's ornate courtyards, Hawa Mahal, Amer Fort, and serene royal gardens bursting with regal history.",
+                content: `
+                    <span class="text-saffron-600 text-xs font-semibold uppercase tracking-widest block mb-2">Jaipur • Heritage & Architecture</span>
+                    <h2 class="text-3xl font-bold text-earth-900 mb-4">Terracotta Dreams: Architectural Splendor & Gardens of Jaipur</h2>
+                    <div class="flex items-center space-x-4 text-xs text-earth-600 mb-6 pb-4 border-b border-earth-200">
+                        <span><i class="fa-regular fa-user mr-1"></i> Priya Menon</span>
+                        <span><i class="fa-regular fa-calendar mr-1"></i> Oct 19, 2026</span>
+                        <span><i class="fa-regular fa-clock mr-1"></i> 6 min read</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1200&q=80" alt="Jaipur Hawa Mahal" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-md">
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Bathed in the warm terracotta hues that earned it the moniker 'Pink City', Jaipur is a vibrant collision of royal heritage and living tradition. Founded in 1727 by Maharaja Sawai Jai Singh II, the city is meticulously planned on ancient Vedic Vastu Shastra principles.
+                    </p>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">The Architectural Marvel of Hawa Mahal</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        The iconic Hawa Mahal, or the 'Palace of Winds', stands as a testament to Rajputana ingenuity. With its 953 intricately carved windows (Jharokhas), it allowed royal women to observe street festivals while remaining unseen behind the intricate lattice screens.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 my-6">
+                        <img src="https://images.unsplash.com/photo-1534758607507-750e58452554?auto=format&fit=crop&w=600&q=80" alt="Amer Fort Jaipur" class="rounded-xl h-48 object-cover w-full">
+                        <img src="https://images.unsplash.com/photo-1600100396654-a3ebc8984cc4?auto=format&fit=crop&w=600&q=80" alt="Jaipur Gardens" class="rounded-xl h-48 object-cover w-full">
+                    </div>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">Gardens and Hilltop Forts</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        From the lush geometric lawns of Sisodia Rani Garden to the imposing ramparts of Amer Fort overlooking Maota Lake, Jaipur offers a seamless blend of natural landscaped beauty and monumental stone architecture.
+                    </p>
+                `
+            },
+            {
+                id: 3,
+                title: "Mist-Kissed Peaks & Emerald Tea Estates: The Magic of Ooty",
+                category: "Mountains",
+                location: "Ooty, Nilgiris, Tamil Nadu",
+                readTime: "4 min read",
+                author: "Rohan K.",
+                date: "Oct 15, 2026",
+                image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
+                snippet: "Journey into the Nilgiri hills where endless tea gardens, botanical wonders, and misty mountain trails create an idyllic highland retreat.",
+                content: `
+                    <span class="text-saffron-600 text-xs font-semibold uppercase tracking-widest block mb-2">Ooty • Nilgiri Hills</span>
+                    <h2 class="text-3xl font-bold text-earth-900 mb-4">Mist-Kissed Peaks & Emerald Tea Estates: The Magic of Ooty</h2>
+                    <div class="flex items-center space-x-4 text-xs text-earth-600 mb-6 pb-4 border-b border-earth-200">
+                        <span><i class="fa-regular fa-user mr-1"></i> Rohan K.</span>
+                        <span><i class="fa-regular fa-calendar mr-1"></i> Oct 15, 2026</span>
+                        <span><i class="fa-regular fa-clock mr-1"></i> 4 min read</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80" alt="Ooty Tea Gardens" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-md">
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Perched high in the Nilgiri mountains (‘Blue Mountains’), Ooty enchants travelers with its cool crisp air, rolling hills draped in emerald tea bushes, and Eucalyptus-scented forests. It is a sanctuary of peace away from the tropical bustle of the plains.
+                    </p>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">The Botanical Splendors</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        The Government Botanical Garden, spread across 55 acres, features thousands of species of exotic plants, vibrant flowers, and a centuries-old fossilized tree trunk. Walking through the garden paths while gentle mountain mist rolls in is an ethereal experience.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 my-6">
+                        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=600&q=80" alt="Nilgiri Hills Train" class="rounded-xl h-48 object-cover w-full">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Ooty Lake" class="rounded-xl h-48 object-cover w-full">
+                    </div>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">The UNESCO Mountain Railway</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        No trip to Ooty is complete without riding the historic Nilgiri Mountain Railway toy train. Chugging through dark tunnels, over dizzying viaducts, and past sweeping tea plantations, it offers windows to some of the most untouched panoramas in Southern India.
+                    </p>
+                `
+            },
+            {
+                id: 4,
+                title: "Coastal Rhythm & Wild Greenery: Mumbai's Hidden Sanctuaries",
+                category: "Coastal",
+                location: "Mumbai, Maharashtra",
+                readTime: "5 min read",
+                author: "Ananya Deshmukh",
+                date: "Oct 11, 2026",
+                image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80",
+                snippet: "Discover how India's financial capital balances the dramatic Arabian Sea coastline with the lush wild expanse of Sanjay Gandhi National Park.",
+                content: `
+                    <span class="text-saffron-600 text-xs font-semibold uppercase tracking-widest block mb-2">Mumbai • Coastal & Wildlife</span>
+                    <h2 class="text-3xl font-bold text-earth-900 mb-4">Coastal Rhythm & Wild Greenery: Mumbai's Hidden Sanctuaries</h2>
+                    <div class="flex items-center space-x-4 text-xs text-earth-600 mb-6 pb-4 border-b border-earth-200">
+                        <span><i class="fa-regular fa-user mr-1"></i> Ananya Deshmukh</span>
+                        <span><i class="fa-regular fa-calendar mr-1"></i> Oct 11, 2026</span>
+                        <span><i class="fa-regular fa-clock mr-1"></i> 5 min read</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1200&q=80" alt="Mumbai Marine Drive" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-md">
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        While Mumbai is universally celebrated for its colonial architecture, art-deco promenades, and bustling commerce, it harbors an unexpected soul of pristine nature and dramatic coastal beauty.
+                    </p>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">Sanjay Gandhi National Park: The Urban Forest</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Right within city limits lies Sanjay Gandhi National Park, a sprawling dense forest home to leopards, 250+ species of birds, and the 2,400-year-old rock-cut Kanheri Caves. Hiking through its verdant trails offers a surreal escape from the urban megacity.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 my-6">
+                        <img src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=600&q=80" alt="Mumbai Coast" class="rounded-xl h-48 object-cover w-full">
+                        <img src="https://images.unsplash.com/photo-1628157582853-a796fa650a6a?auto=format&fit=crop&w=600&q=80" alt="Kanheri Caves Mumbai" class="rounded-xl h-48 object-cover w-full">
+                    </div>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">Marine Drive at Sunset</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        As evening falls, the iconic 'Queen's Necklace' along Marine Drive sparkles against the Arabian Sea waves, blending coastal serenity with the vibrant pulse of western India.
+                    </p>
+                `
+            },
+            {
+                id: 5,
+                title: "Sanctuaries of Faith & Stone: Sacred Temples Across Bharat",
+                category: "Temples",
+                location: "Various Locations, India",
+                readTime: "7 min read",
+                author: "Pandit V. Shastri",
+                date: "Oct 05, 2026",
+                image: "https://images.unsplash.com/photo-1609766418302-d4a7704878a2?auto=format&fit=crop&w=800&q=80",
+                snippet: "Journey through architectural marvels of ancient Indian temples carved into mystical hillsides and riverbanks, radiating spiritual energy.",
+                content: `
+                    <span class="text-saffron-600 text-xs font-semibold uppercase tracking-widest block mb-2">Temples • Sacred Architecture</span>
+                    <h2 class="text-3xl font-bold text-earth-900 mb-4">Sanctuaries of Faith & Stone: Sacred Temples Across Bharat</h2>
+                    <div class="flex items-center space-x-4 text-xs text-earth-600 mb-6 pb-4 border-b border-earth-200">
+                        <span><i class="fa-regular fa-user mr-1"></i> Pandit V. Shastri</span>
+                        <span><i class="fa-regular fa-calendar mr-1"></i> Oct 05, 2026</span>
+                        <span><i class="fa-regular fa-clock mr-1"></i> 7 min read</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1609766418302-d4a7704878a2?auto=format&fit=crop&w=1200&q=80" alt="Indian Temple Architecture" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-md">
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Indian temple architecture is an exquisite synthesis of geometry, cosmology, and deep devotion. Carved from monolithic rocks or towering over sacred riverbanks, these architectural wonders reflect centuries of artistic brilliance and spiritual philosophy.
+                    </p>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">Intricate Carvings and Cosmic Alignment</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Every pillar, dome, and sculpture tells a story from ancient epics. From the sun temples aligned with equinoxes to cliffside shrines echoing with chanting, these sanctuaries remain living hubs of culture and meditation.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 my-6">
+                        <img src="https://images.unsplash.com/photo-1621570279611-db6454982a17?auto=format&fit=crop&w=600&q=80" alt="Temple Details" class="rounded-xl h-48 object-cover w-full">
+                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80" alt="Sacred Ghats" class="rounded-xl h-48 object-cover w-full">
+                    </div>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3-3">Harmony with Nature</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Remarkably, ancient Indian architects built temples in complete harmony with natural landscapes—nestled inside dense forests, perched on mountain peaks, or flanking roaring rivers.
+                    </p>
+                `
+            },
+            {
+                id: 6,
+                title: "Green Valleys & Serene Waters: The Lesser-Known Trails of Kerala",
+                category: "Lakes",
+                location: "Munnar & Alleppey, Kerala",
+                readTime: "5 min read",
+                author: "Meera Nair",
+                date: "Sep 28, 2026",
+                image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+                snippet: "Float through palm-fringed backwaters and trek across misty green tea carpets in God's Own Country.",
+                content: `
+                    <span class="text-saffron-600 text-xs font-semibold uppercase tracking-widest block mb-2">Kerala • Backwaters & Hills</span>
+                    <h2 class="text-3xl font-bold text-earth-900 mb-4">Green Valleys & Serene Waters: The Lesser-Known Trails of Kerala</h2>
+                    <div class="flex items-center space-x-4 text-xs text-earth-600 mb-6 pb-4 border-b border-earth-200">
+                        <span><i class="fa-regular fa-user mr-1"></i> Meera Nair</span>
+                        <span><i class="fa-regular fa-calendar mr-1"></i> Sep 28, 2026</span>
+                        <span><i class="fa-regular fa-clock mr-1"></i> 5 min read</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1200&q=80" alt="Kerala Backwaters" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-md">
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        Kerala offers a soothing balm for the senses. Whether it's drifting on a traditional wooden houseboat along the silent backwaters of Alleppey or breathing in the aroma of fresh cardamom and tea in Munnar's undulating hills, nature thrives here in vibrant abundance.
+                    </p>
+                    <h3 class="text-xl font-bold text-earth-900 mt-6 mb-3">The Symphony of Backwaters</h3>
+                    <p class="text-earth-700 leading-relaxed mb-4">
+                        A network of serene lagoons, lakes, and canals connects coastal villages where life moves at an unhurried, peaceful pace, accompanied by the gentle rustling of coconut palms.
+                    </p>
+                `
+            }
+        ];
+
+        let activeCategory = 'All';
+
+        // Render Blog Cards
+        function renderBlogs(postsToRender) {
+            const grid = document.getElementById('blog-grid');
+            if (postsToRender.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center">
+                        <i class="fa-solid fa-seedling text-4xl text-earth-400 mb-3"></i>
+                        <p class="text-earth-600 font-medium">No stories found in this category.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = postsToRender.map(post => `
+                <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group border border-earth-200/60">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/e8e1d5/523d2d?text=Vistas+of+Bharat'">
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-earth-900 text-xs font-semibold shadow-sm">
+                            ${post.category}
+                        </span>
+                        <span class="absolute bottom-4 left-4 text-white text-xs font-medium flex items-center bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-sm">
+                            <i class="fa-solid fa-location-dot mr-1.5 text-saffron-500"></i> ${post.location}
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-earth-600 mb-3">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> ${post.date}</span>
+                                <span><i class="fa-regular fa-clock mr-1"></i> ${post.readTime}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-earth-900 group-hover:text-saffron-600 transition-colors mb-3 leading-snug">
+                                ${post.title}
+                            </h3>
+                            <p class="text-earth-600 text-sm font-light leading-relaxed mb-6">
+                                ${post.snippet}
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-earth-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-earth-800">By ${post.author}</span>
+                            <button onclick="openArticleModal(${post.id})" class="inline-flex items-center text-sm font-semibold text-saffron-600 hover:text-saffron-700 transition-colors">
+                                <span>Read Story</span>
+                                <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Category Filter Function
+        function filterCategory(category) {
+            activeCategory = category;
+            
+            // Update active styles on buttons
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.textContent.trim() === category || (category === 'All' && btn.textContent.trim() === 'All')) {
+                    btn.className = "cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-900 text-white shadow-sm";
+                } else {
+                    btn.className = "cat-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-earth-200/80 hover:bg-earth-200 text-earth-700";
+                }
+            });
+
+            if (category === 'All') {
+                renderBlogs(blogPosts);
+            } else {
+                const filtered = blogPosts.filter(p => p.category === category);
+                renderBlogs(filtered);
+            }
+        }
+
+        // Hero Background Slider Logic
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? '1' : '0';
+            });
+            dots.forEach((dot, i) => {
+                dot.className = i === index ? "slider-dot w-6 h-3 rounded-full bg-saffron-500 transition-all" : "slider-dot w-3 h-3 rounded-full bg-white/50 transition-all";
+            });
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto advance hero slider every 5 seconds
+        setInterval(() => {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }, 5000);
+
+        // Modal Functionality for Reading Full Articles
+        function openArticleModal(postId) {
+            const post = blogPosts.find(p => p.id === postId);
+            if (!post) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = post.content;
+
+            const modal = document.getElementById('article-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticleModal() {
+            const modal = document.getElementById('article-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Search Modal Functionality
+        function openSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('search-input').focus();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleSearch(query) {
+            const container = document.getElementById('search-results');
+            if (!query.trim()) {
+                container.innerHTML = '<p class="text-xs text-earth-500 text-center py-4">Type to search blog posts...</p>';
+                return;
+            }
+
+            const q = query.toLowerCase();
+            const results = blogPosts.filter(p => p.title.toLowerCase().includes(q) || p.location.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.snippet.toLowerCase().includes(q));
+
+            if (results.length === 0) {
+                container.innerHTML = '<p class="text-xs text-earth-500 text-center py-4">No matching destinations found.</p>';
+                return;
+            }
+
+            container.innerHTML = results.map(r => `
+                <div onclick="closeSearchModal(); openArticleModal(${r.id})" class="p-3 rounded-xl hover:bg-earth-100 cursor-pointer transition-colors flex items-center space-x-3">
+                    <img src="${r.image}" class="w-12 h-12 rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-xs font-bold text-earth-900 line-clamp-1">${r.title}</h4>
+                        <span class="text-[10px] text-saffron-600 font-semibold">${r.location} • ${r.category}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Newsletter Subscription Handler
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('newsletter-email');
+            const msg = document.getElementById('newsletter-msg');
+            
+            if (emailInput.value) {
+                msg.textContent = "Thank you for subscribing! Welcome to the Vistas of Bharat community.";
+                msg.className = "mt-4 text-sm font-medium text-saffron-400 block";
+                emailInput.value = "";
+                showToast("Subscribed successfully!");
+            }
+        }
+
+        // Toast Notification Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Close modals on clicking outside or ESC key
+        window.addEventListener('click', (e) => {
+            const articleModal = document.getElementById('article-modal');
+            const searchModal = document.getElementById('search-modal');
+            if (e.target === articleModal) closeArticleModal();
+            if (e.target === searchModal) closeSearchModal();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeArticleModal();
+                closeSearchModal();
+            }
+        });
+
+        // Initial render on load
+        window.onload = function() {
+            renderBlogs(blogPosts);
+        };
+    </script>
 </body>
 </html>
